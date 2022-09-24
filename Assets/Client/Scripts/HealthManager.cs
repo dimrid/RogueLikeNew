@@ -1,12 +1,10 @@
-using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
     [SerializeField] private int _currentHealth;
-    [SerializeField] private Image _bar;
-    [SerializeField] private float _fill = 1f;
-
     private int _maxHealth = 10;
 
     public void HurtPlayer(int damage)
@@ -16,11 +14,5 @@ public class HealthManager : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        if ( _currentHealth < _maxHealth)
-        {
-            _fill -= 0.1f;
-            _bar.fillAmount = _fill;
-        }
-    }   
-
+    }
 }

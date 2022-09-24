@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
+
 
 public class HealthBar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] HealthManager _healthManager;
+    [SerializeField] private Image _healthBarFill;
+
+
+    private void Awake()
     {
-        
+        _healthManager.HealthSet += OnHealthChanged;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        _healthManager.HealthSet -= OnHealthChanged;
+    }
+
+    private void OnHealthChanged(float valueHpPercent)
+    {
+        _healthBarFill.fillAmount = valueHpPercent;
     }
 }
